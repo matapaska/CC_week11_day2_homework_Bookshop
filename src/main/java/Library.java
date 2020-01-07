@@ -22,4 +22,15 @@ public class Library {
             this.stock.add(book);
         }
     }
+
+    public void removeBook(){
+        this.stock.remove(0);
+    }
+
+    public void lendBook( Borrower borrower, Book book) {
+        if(this.stock.size() > 0 && borrower.countBorrowedBooks() < borrower.limit){
+            removeBook();
+            borrower.borrowBook(book);
+        }
+    }
 }
